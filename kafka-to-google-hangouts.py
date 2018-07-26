@@ -16,12 +16,12 @@ from kafka import KafkaConsumer
 config = ConfigParser.RawConfigParser()
 config.read('config.cfg')
 
+
 KAFKA_ENDPOINT = '{0}:{1}'.format(config.get('Kafka', 'kafka_endpoint'), config.get('Kafka', 'kafka_endpoint_port'))
 KAFKA_TOPIC = config.get('Kafka', 'topic')
 
 WEBHOOK_URL = config.get('Hangouts', 'webhook_url')
 MESSAGE_HEADERS = {'Content-Type': 'application/json; charset=UTF-8'}
-
 
 class Consumer(multiprocessing.Process):
     def __init__(self):
@@ -30,7 +30,7 @@ class Consumer(multiprocessing.Process):
         
     def stop(self):
         self.stop_event.set()
-        
+
     def run(self):
         consumer = KafkaConsumer(bootstrap_servers=KAFKA_ENDPOINT,
                                  auto_offset_reset='earliest',
@@ -54,12 +54,16 @@ class Consumer(multiprocessing.Process):
         
         
 def main():
+
     tasks = [
         Consumer()
     ]
 
     for t in tasks:
         t.start()
+
+    for task in tasks:
+        task.join()
         
         
 if __name__ == "__main__":
@@ -67,4 +71,5 @@ if __name__ == "__main__":
         format='%(asctime)s.%(msecs)s:%(name)s:%(thread)d:%(levelname)s:%(process)d:%(message)s',
         level=logging.INFO
         )
+
     main()
