@@ -33,7 +33,7 @@ class Consumer(multiprocessing.Process):
 
     def run(self):
         consumer = KafkaConsumer(bootstrap_servers=KAFKA_ENDPOINT,
-                                 auto_offset_reset='earliest',
+                                 auto_offset_reset='latest',
                                  consumer_timeout_ms=1000)
         consumer.subscribe([KAFKA_TOPIC])
         

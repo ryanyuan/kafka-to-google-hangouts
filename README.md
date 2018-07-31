@@ -6,7 +6,7 @@ This project enables messages streaming process from [Apache Kafka](http://kafka
 
 You need to have a running Kafka service.
 
-# Environment configuartions and validations
+# Environment configurations and validations
 
 Open `config.cfg` and edit the values using text editor:
 
@@ -43,7 +43,7 @@ $ python hangouts-test.py
 Now let's stream the messages from Kafka to Google Hangout bot.
 
 ```
-$ python afka-to-google-hangouts.py
+$ python kafka-to-google-hangouts.py
 ...
 ({'status': '200', 'content-length': '681', 'x-xss-protection': '1; mode=block', 'x-content-type-options': 'nosniff', 'transfer-encoding': 'chunked', 'vary': 'Origin, X-Origin, Referer', 'server': 'ESF', '-content-encoding': 'gzip', 'cache-control': 'private', 'date': 'Mon, 23 Jul 2018 06:21:43 GMT', 'x-frame-options': 'SAMEORIGIN', 'alt-svc': 'quic=":443"; ma=2592000; v="44,43,39,35"', 'content-type': 'application/json; charset=UTF-8'}, '{\n  "name": "spaces/AAAAXcBQUfE/messages/sVjuLVzBTt4.sVjuLVzBTt4",\n  "sender": {\n    "name": "users/114022495153014004089",\n    "displayName": "gcp-awesome-bot",\n    "avatarUrl": "",\n    "email": "",\n    "type": "BOT"\n  },\n  "text": "@stories_startup Finally its for free https://t.co/ysIsYF4I3R",\n  "cards": [],\n  "previewText": "",\n  "annotations": [],\n  "thread": {\n    "name": "spaces/AAAAXcBQUfE/threads/sVjuLVzBTt4"\n  },\n  "space": {\n    "name": "spaces/AAAAXcBQUfE",\n    "type": "ROOM",\n    "displayName": "GCP-POC"\n  },\n  "fallbackText": "",\n  "argumentText": "@stories_startup Finally its for free https://t.co/ysIsYF4I3R",\n  "createTime": "2018-07-23T06:21:43.770383Z"\n}\n')
 ...
